@@ -1,6 +1,6 @@
 version: '3.1'
 services:
-  odoo-stack:
+  odoo:
     container_name: odoo
     build:
       context: ./dockerfile
@@ -19,7 +19,7 @@ services:
     container_name: database
     image: postgres:latest
     volumes:
-      - database-stack-data:/var/lib/postgresql/data/pgdata
+      - database-data:/var/lib/postgresql/data/pgdata
     ports:
       - 5432:5432
     #command: -p 5433
