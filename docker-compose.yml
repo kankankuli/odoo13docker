@@ -1,10 +1,10 @@
 version: '3.1'
 services:
   odoo-stack:
-    container_name: odoo-stack
+    container_name: odoo
     build:
       context: ./dockerfile
-      dockerfile: odoo.Dockerfile
+      dockerfile: Dockerfile
     volumes:
       - ./addons-extra:/mnt/addons-extra
       - ./odoo-config:/etc/odoo
@@ -12,11 +12,11 @@ services:
     ports:
       - 8069:8069
     depends_on:
-      - database-stack
+      - database
     restart: always
   
-  database-stack:
-    container_name: database-stack
+  database:
+    container_name: database
     image: postgres:latest
     volumes:
       - database-stack-data:/var/lib/postgresql/data/pgdata
